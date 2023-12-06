@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class GifsService {
 
+  public gifList = [];
 
   private _tagsHistory:string[] = [];
   private apiKey:string = 'dw9B0vmpvd91JCNR9V4Gf0ip71gToThD';
@@ -45,8 +46,10 @@ export class GifsService {
 
 
 
-    this.httpClient.get(`${this.apiKey}/search`, {params})
+    this.httpClient.get<any>(`${this.apiKey}/search`, {params})
     .subscribe(resp=>{
+
+      this.gifList = resp.data
       console.log(resp)
 
     })
