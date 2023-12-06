@@ -38,18 +38,14 @@ export class GifsService {
     if(tag.length===0) return;
     this.organizeHistory(tag);
 
-    
+
 
     this.httpClient.get('api.giphy.com/v1/gifs/search?api_key=dw9B0vmpvd91JCNR9V4Gf0ip71gToThD&q=pokemon&limit=10')
     .subscribe(resp=>{
       console.log(resp)
 
-      //todo por que no se ve este cambio  ddd 
-      //ndjnddnid
-      // cambio 
-      //otro cambio 
     })
-    
+
 
 
 
