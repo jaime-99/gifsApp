@@ -26,6 +26,7 @@ export class SearchBoxComponent {
 
       this.tagInput.nativeElement.value='';
 
+
   }
 
 }
