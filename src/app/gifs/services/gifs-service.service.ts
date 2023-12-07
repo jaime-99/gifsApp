@@ -51,7 +51,7 @@ export class GifsService {
 
       this.gifList = resp.data
       console.log(resp)
-
+      // ejemplo 
     })
 
 
