@@ -5,7 +5,8 @@
 
   <div class="list-group list-reset" >
 
-    <button  *ngFor="let tag of tags let a = index" class="list-group-item list-group-item-action"> {{a+1}} {{ tag}}
+    <button  *ngFor="let tag of tags let a = index" (click)="onClick(tag)"
+      class="list-group-item list-group-item-action"> {{a+1}} {{tag}}
     </button>
 
 

@@ -36,28 +36,27 @@ export class GifsService {
 
   public searchTag(tag:string):void{
 
-    if(tag.length===0) return;
+    // if(tag.length===0) return;
     this.organizeHistory(tag);
 
-    const params = new HttpParams()
-    .set('api_key',this.apiKey)
-    .set('limit','10')
-    .set('1',tag)
+    // const params = new HttpParams()
+    // .set('api_key',this.apiKey)
+    // .set('limit','10')
+    // .set('1',tag)
 
 
 
-    this.httpClient.get<any>(`${this.apiKey}/search`, {params})
-    .subscribe(resp=>{
+    // this.httpClient.get<any>(`${this.apiKey}/search`, {params})
+    // .subscribe(resp=>{
 
-      this.gifList = resp.data
-      console.log(resp)
-      // ejemplo 
-    })
+    //   this.gifList = resp.data
+      // console.log(resp)
+    }
 
 
 
 
 
   }
-}
+
 
