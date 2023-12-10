@@ -1,0 +1,8 @@
+body {
+    overflow-x: hidden; /* Esto evita el desbordamiento horizontal en el cuerpo */
+}
+
+/* O en algún contenedor específico si es necesario */
+.des {
+    overflow-x: hidden;
+}

@@ -10,6 +10,7 @@ export class GifsService {
 
   private _tagsHistory:string[] = [];
   private apiKey:string = 'dw9B0vmpvd91JCNR9V4Gf0ip71gToThD';
+  private serviceUrl:string = 'https://api.giphy.com/v1/gifs'
 
 
   constructor(private httpClient:HttpClient) { }
@@ -35,23 +36,25 @@ export class GifsService {
 
 
   public searchTag(tag:string):void{
+    console.log(tag)
 
-    // if(tag.length===0) return;
+    if(tag.length===0) return;
     this.organizeHistory(tag);
 
-    // const params = new HttpParams()
-    // .set('api_key',this.apiKey)
-    // .set('limit','10')
-    // .set('1',tag)
+    const params = new HttpParams()
+    .set('api_key',this.apiKey)
+    .set('limit','10')
+    .set('q',tag)
 
 
 
     // this.httpClient.get<any>(`${this.apiKey}/search`, {params})
-    // .subscribe(resp=>{
+    this.httpClient.get<any>(`${this.serviceUrl}/search`, {params})
+    .subscribe(resp=>{
 
-    //   this.gifList = resp.data
-      // console.log(resp)
-    }
+      this.gifList = resp.data
+      console.log(resp)
+    })
 
 
 
@@ -59,4 +62,4 @@ export class GifsService {
 
   }
 
-
+}
