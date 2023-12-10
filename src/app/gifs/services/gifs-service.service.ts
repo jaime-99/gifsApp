@@ -13,7 +13,11 @@ export class GifsService {
   private serviceUrl:string = 'https://api.giphy.com/v1/gifs'
 
 
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient:HttpClient) { 
+    this.loadLocalStorage();
+    // console.log(this._tagsHistory)
+    
+  }
 
   get tagsHistory(){
     return [...this._tagsHistory];
@@ -30,13 +34,26 @@ export class GifsService {
 
     this._tagsHistory.unshift(tag); // es para agregar el tag al incio del arrelgo
 
-    this._tagsHistory = this._tagsHistory.splice(0,10) // es para solo alla 10 propiedades en el arreglo
+    this._tagsHistory = this._tagsHistory.splice(0,10) // es para que solo alla 10 propiedades en el arreglo
+    this.saveLocalStorage()
+  }
 
+  private saveLocalStorage():void{
+    localStorage.setItem('history',JSON.stringify (this._tagsHistory))
+  }
+
+  private loadLocalStorage():void{
+    if(!localStorage.getItem('history')) return;
+
+    this._tagsHistory = JSON.parse( localStorage.getItem('history')!);
+
+    if(this._tagsHistory.length<0) return;
+    this.searchTag(this.tagsHistory[0]);
   }
 
 
   public searchTag(tag:string):void{
-    console.log(tag)
+    // console.log(tag)
 
     if(tag.length===0) return;
     this.organizeHistory(tag);
@@ -53,7 +70,7 @@ export class GifsService {
     .subscribe(resp=>{
 
       this.gifList = resp.data
-      console.log(resp)
+      // console.log(resp)
     })
 
 

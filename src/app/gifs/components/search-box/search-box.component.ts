@@ -8,7 +8,9 @@ import { GifsService } from '../../services/gifs-service.service';
 })
 export class SearchBoxComponent {
 
-  constructor(private gifsService:GifsService){}
+  constructor(private gifsService:GifsService){
+    
+  }
 
 
 
@@ -20,7 +22,7 @@ export class SearchBoxComponent {
   searchTag()  {
 
       const newTag = this.tagInput.nativeElement.value
-      console.log(newTag)
+      // console.log(newTag)
 
       this.gifsService.searchTag(newTag)
 
