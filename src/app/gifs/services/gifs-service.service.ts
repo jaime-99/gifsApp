@@ -13,10 +13,10 @@ export class GifsService {
   private serviceUrl:string = 'https://api.giphy.com/v1/gifs'
 
 
-  constructor(private httpClient:HttpClient) { 
-    this.loadLocalStorage();
+  constructor(private httpClient:HttpClient) {
+    // this.loadLocalStorage();
     // console.log(this._tagsHistory)
-    
+
   }
 
   get tagsHistory(){
@@ -65,12 +65,11 @@ export class GifsService {
 
 
 
-    // this.httpClient.get<any>(`${this.apiKey}/search`, {params})
+    this.httpClient.get<any>(`${this.apiKey}/search`, {params})
     this.httpClient.get<any>(`${this.serviceUrl}/search`, {params})
     .subscribe(resp=>{
 
       this.gifList = resp.data
-      // console.log(resp)
     })
 
 
